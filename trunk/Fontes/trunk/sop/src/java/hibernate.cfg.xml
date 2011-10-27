@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sop?autoReconnect=true</property>
+    <property name="hibernate.connection.username">sopusr</property>
+    <property name="hibernate.connection.password">sop2010</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.default_schema">sop</property>
+    <property name="hibernate.transaction.auto_close_session">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.order_updates">true</property>
+    <property name="hibernate.connection.release_mode">auto</property>
+    <property name="hibernate.max_fetch_depth">3</property>
+    <property name="hibernate.generate_statistics">true</property>
+    <!-- Mapeamentos de classes anotadas -->
+    <mapping class="annotations.AtendimentoTratamento"/>
+    <mapping class="annotations.AtendimentoOrcamento"/>
+    <mapping class="annotations.Boca"/>
+    <mapping class="annotations.ChequeBancario"/>
+    <mapping class="annotations.ComprovantePagamentoCartao"/>
+    <mapping class="annotations.Dente"/>
+    <mapping class="annotations.Dentista"/>
+    <mapping class="annotations.Endereco"/>
+    <mapping class="annotations.Ficha"/>
+    <mapping class="annotations.FilaAtendimentoTratamento"/>
+    <mapping class="annotations.FilaAtendimentoOrcamento"/>
+    <mapping class="annotations.FormaPagamento"/>
+    <mapping class="annotations.Funcionario"/>
+    <mapping class="annotations.GrupoAcesso"/>
+    <mapping class="annotations.HistoricoDente"/>
+    <mapping class="annotations.HistoricoBoca"/>
+    <mapping class="annotations.Paciente"/>
+    <mapping class="annotations.Pagamento"/>
+    <mapping class="annotations.Pessoa"/>
+    <mapping class="annotations.Procedimento"/>
+    <mapping class="annotations.StatusChequeBancario"/>
+    <mapping class="annotations.StatusProcedimento"/>
+  </session-factory>
+</hibernate-configuration>

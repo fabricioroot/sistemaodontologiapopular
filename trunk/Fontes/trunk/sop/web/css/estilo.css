@@ -1,0 +1,85 @@
+/*
+    Document   : estilo
+    Created on : 25/01/2010, 14:43:36
+    Author     : Fabricio Reis
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+html, body {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+#login {width:527px; height:187px; background:url(../imagens/fundo.gif) no-repeat}
+
+th {
+    background-color: #C0C0C0;
+    font-size: 12px;
+    font-family: Verdana;
+    font-style: normal;
+}
+
+td {
+    font-size: 12px;
+    font-family: Verdana;
+}
+
+.divlistagem {
+    overflow: auto;
+    visibility: visible;
+    z-index: auto;
+    page-break-after: auto;
+    border: thin none #CCCCCC;
+    height: 100%;
+    width: 100%;
+}
+
+input {
+    border: 1px solid #999999;
+    font-family: Verdana;
+    font-size: 12px;
+}
+
+.bordatabela {
+    background-color: #E6E6E6;
+    border: 1px solid #CCCCCC;
+}
+
+.input_image {
+    border: thin none;
+}
+
+.texto_formulario {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.botaologin {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333333;
+    background-color: #CCCCCC;
+    font-weight: bold;
+}
+
+a:link {
+    color:#d42945;
+    text-decoration:none;
+    border-bottom:1px dotted #ffbac8;
+}
+
+a:visited {
+    color:#d42945;
+    border-bottom:none;
+    text-decoration:none;
+}
+
+a:hover, a:focus {
+    color:#f03b58;
+    border-bottom:1px solid #f03b58;
+    text-decoration:none;
+}

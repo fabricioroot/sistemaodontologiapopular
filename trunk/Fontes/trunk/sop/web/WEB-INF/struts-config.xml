@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>
+    <form-beans>
+        <!-- Login -->
+        <form-bean name="LoginActionForm" type="web.login.LoginActionForm"/>
+        <!-- FormaPagamento -->
+        <form-bean name="CadastrarFormaPagamentoActionForm" type="web.formaPagamento.CadastrarFormaPagamentoActionForm"/>
+        <form-bean name="ConsultarFormaPagamentoActionForm" type="web.formaPagamento.ConsultarFormaPagamentoActionForm"/>
+        <form-bean name="AtualizarFormaPagamentoActionForm" type="web.formaPagamento.AtualizarFormaPagamentoActionForm"/>
+        <!-- ChequeBancario -->
+        <form-bean name="CadastrarChequeBancarioActionForm" type="web.chequeBancario.CadastrarChequeBancarioActionForm"/>
+        <form-bean name="ConsultarChequeBancarioActionForm" type="web.chequeBancario.ConsultarChequeBancarioActionForm"/>
+        <form-bean name="AtualizarChequeBancarioActionForm" type="web.chequeBancario.AtualizarChequeBancarioActionForm"/>
+        <!-- ComprovantePagamentoCartao -->
+        <form-bean name="CadastrarComprovantePagamentoCartaoActionForm" type="web.comprovantePagamentoCartao.CadastrarComprovantePagamentoCartaoActionForm"/>
+        <form-bean name="ConsultarComprovantePagamentoCartaoActionForm" type="web.comprovantePagamentoCartao.ConsultarComprovantePagamentoCartaoActionForm"/>
+        <form-bean name="AtualizarComprovantePagamentoCartaoActionForm" type="web.comprovantePagamentoCartao.AtualizarComprovantePagamentoCartaoActionForm"/>
+        <!-- Caixa -->
+        <form-bean name="FaturarPagamentoActionForm" type="web.caixa.FaturarPagamentoActionForm"/>
+        <!-- Funcionario -->
+        <form-bean name="CadastrarFuncionarioActionForm" type="web.funcionario.CadastrarFuncionarioActionForm"/>
+        <form-bean name="ConsultarFuncionarioActionForm" type="web.funcionario.ConsultarFuncionarioActionForm"/>
+        <form-bean name="AtualizarFuncionarioActionForm" type="web.funcionario.AtualizarFuncionarioActionForm"/>
+        <!-- Paciente -->
+        <form-bean name="CadastrarPacienteActionForm" type="web.paciente.CadastrarPacienteActionForm"/>
+        <form-bean name="ConsultarPacienteActionForm" type="web.paciente.ConsultarPacienteActionForm"/>
+        <form-bean name="AtualizarPacienteActionForm" type="web.paciente.AtualizarPacienteActionForm"/>
+        <!-- Procedimento -->
+        <form-bean name="CadastrarProcedimentoActionForm" type="web.procedimento.CadastrarProcedimentoActionForm"/>
+        <form-bean name="ConsultarProcedimentoActionForm" type="web.procedimento.ConsultarProcedimentoActionForm"/>
+        <form-bean name="AtualizarProcedimentoActionForm" type="web.procedimento.AtualizarProcedimentoActionForm"/>
+        <!-- Grupo Acesso -->
+        <form-bean name="ConsultarGrupoAcessoActionForm" type="web.grupoAcesso.ConsultarGrupoAcessoActionForm"/>
+        <!-- Atendimento Orcamento e Atendimento Tratamento -->
+        <form-bean name="IncluirProcedimentoActionForm" type="web.atendimentoOrcamento.IncluirProcedimentoActionForm"/>
+        <form-bean name="IncluirProcedimentoBocaActionForm" type="web.atendimentoOrcamento.IncluirProcedimentoBocaActionForm"/>
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards type="org.apache.struts.action.ActionForward">
+        <forward name="welcome"  path="/main.do"/>
+    </global-forwards>
+
+    <action-mappings>
+        <action path="/main" forward="/app/principal.jsp"/>
+
+        <!-- Mapeamento dos links dos menus -->
+        <!-- Caixa -->
+        <action path="/app/caixa/liberacaoProcedimentos" forward="/app/caixa/consultarPacienteParaLiberacaoProcedimentos.jsp"/>
+        <action path="/app/caixa/registrarPagamentos" forward="/app/caixa/consultarPacienteParaPagamentos.jsp"/>
+        <action path="/app/caixa/registrarDevolucaoDinheiro" forward="/app/caixa/consultarPacienteParaDevolverDinheiro.jsp"/>
+        <!-- Cheques Bancarios -->
+        <action path="/app/chequeBancario/consultarChequeBancario" forward="/app/chequeBancario/consultarChequeBancario.jsp"/>
+        <action path="/app/chequeBancario/editarChequeBancario" forward="/app/chequeBancario/consultarChequeBancario.jsp"/>
+        <!-- Comprovantes Pagamentos com Cartao -->
+        <action path="/app/comprovantePagamentoCartao/consultarComprovantePagamentoCartao" forward="/app/comprovantePagamentoCartao/consultarComprovantePagamentoCartao.jsp"/>
+        <action path="/app/comprovantePagamentoCartao/editarComprovantePagamentoCartao" forward="/app/comprovantePagamentoCartao/consultarComprovantePagamentoCartao.jsp"/>
+        <!-- Financeiro - Formas de Pagamento -->
+        <action path="/app/formaPagamento/cadastrarFormaPagamento" forward="/app/formaPagamento/cadastrarFormaPagamento.jsp"/>
+        <action path="/app/formaPagamento/consultarFormaPagamento" forward="/app/formaPagamento/consultarFormaPagamento.jsp"/>
+        <action path="/app/formaPagamento/editarFormaPagamento" forward="/app/formaPagamento/consultarFormaPagamento.jsp"/>
+        <!-- Funcionarios -->
+        <action path="/app/funcionario/cadastrarFuncionario" forward="/app/funcionario/cadastrarFuncionario.jsp"/>
+        <action path="/app/funcionario/consultarFuncionario" forward="/app/funcionario/consultarFuncionario.jsp"/>
+        <action path="/app/funcionario/editarFuncionario" forward="/app/funcionario/consultarFuncionario.jsp"/>
+        <!-- Grupos de Acesso -->
+        <action path="/app/grupoAcesso/consultarGrupoAcesso" forward="/app/grupoAcesso/consultarGrupoAcesso.jsp"/>
+        <!-- Pacientes -->
+        <action path="/app/paciente/cadastrarPaciente" forward="/app/paciente/cadastrarPaciente.jsp"/>
+        <action path="/app/paciente/consultarPaciente" forward="/app/paciente/consultarPaciente.jsp"/>
+        <action path="/app/paciente/editarPaciente" forward="/app/paciente/consultarPaciente.jsp"/>
+        <!-- Procedimentos -->
+        <action path="/app/procedimento/cadastrarProcedimento" forward="/app/procedimento/cadastrarProcedimento.jsp"/>
+        <action path="/app/procedimento/consultarProcedimento" forward="/app/procedimento/consultarProcedimento.jsp"/>
+        <action path="/app/procedimento/editarProcedimento" forward="/app/procedimento/consultarProcedimento.jsp"/>
+        <!-- Relatorios -->
+        <!-- Fim do mapeamento dos links dos menus  -->
+
+        <!-- Mapeamento de paginas com actions -->
+        <!-- Login -->
+        <action name="LoginActionForm" path="/login/login" scope="request" type="web.login.LoginAction" validate="false">
+            <forward name="sucesso" path="/app/principal.jsp"/>
+            <forward name="nomeDeUsuarioOuSenhaInvalido" path="/login/loginErro.jsp?codigoMensagem=1"/>
+            <forward name="falhaValidarUsuario" path="/login/loginErro.jsp?codigoMensagem=2"/>
+            <forward name="falhaRegistrarUsuarioNaSessao" path="/login/loginErro.jsp?codigoMensagem=3"/>
+            <forward name="falhaConsultarUsuario" path="/login/loginErro.jsp?codigoMensagem=4"/>
+            <forward name="senhaInvalida" path="/login/loginErro.jsp?codigoMensagem=5"/>
+        </action>
+        <!-- Fim Login -->
+
+        <!-- FilaAtendimentoOrcamento -->
+        <action path="/app/filaAtendimentoOrcamento/actionIncluirAtendimentoOrcamento" scope="request" type="web.filaAtendimentoOrcamento.IncluirAtendimentoOrcamentoAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucesso.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="pacienteInativo" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=26"/>
+            <forward name="falhaIncluirFichaFilaOrcamento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=20"/>
+            <forward name="fichaJaEstaNaFilaAtendimentoOrcamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=1"/>
+            <forward name="fichaJaEstaNaFilaAtendimentoTratamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=2"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoOrcamento/consultarFilaAtendimentoOrcamento" scope="request" type="web.filaAtendimentoOrcamento.ConsultarFilaAtendimentoOrcamentoAction" validate="false">
+            <forward name="sucesso" path="/app/filaAtendimentoOrcamento/consultarFilaAtendimentoOrcamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoOrcamento/consultarFilaAtendimentoOrcamentoEmAtendimento" scope="request" type="web.filaAtendimentoOrcamento.ConsultarFilaAtendimentoOrcamentoEmAtendimentoAction" validate="false">
+            <forward name="sucesso" path="/app/filaAtendimentoOrcamento/consultarFilaAtendimentoOrcamentoEmAtendimento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoOrcamento/actionPriorizarAtendimentoOrcamento" scope="request" type="web.filaAtendimentoOrcamento.PriorizarAtendimentoOrcamentoAction" validate="false">
+            <forward name="sucesso" path="/app/filaAtendimentoOrcamento/consultarFilaAtendimentoOrcamento.do"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="atendimentoIniciadoOuRemovidoDaFila" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=13"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoOrcamento/actionRemoverAtendimentoOrcamento" scope="request" type="web.filaAtendimentoOrcamento.RemoverAtendimentoOrcamentoAction" validate="false">
+            <forward name="sucesso" path="/app/filaAtendimentoOrcamento/consultarFilaAtendimentoOrcamento.do"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="atendimentoIniciadoOuRemovidoDaFila" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=13"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoOrcamento/actionAtenderAtendimentoOrcamento" scope="request" type="web.filaAtendimentoOrcamento.AtenderAtendimentoOrcamentoAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoOrcamento/atenderAtendimentoOrcamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaIdentificarUsuarioLogado" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=21"/>
+            <forward name="funcionarioNaoEhDentista" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=3"/>
+            <forward name="atendimentoIniciadoOuRemovidoDaFila" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=13"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoOrcamento/actionContinuarAtendimentoOrcamento" scope="request" type="web.filaAtendimentoOrcamento.ContinuarAtendimentoOrcamentoAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoOrcamento/atenderAtendimentoOrcamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaContinuarOrcamento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=3"/>
+            <forward name="falhaIdentificarUsuarioLogado" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=21"/>
+            <forward name="funcionarioNaoEhDentista" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=3"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim FilaAtendimentoOrcamento -->
+
+        <!-- FilaAtendimentoTratamento -->
+        <action path="/app/filaAtendimentoTratamento/actionIncluirAtendimentoTratamento" scope="request" type="web.filaAtendimentoTratamento.IncluirAtendimentoTratamentoAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucesso.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="pacienteInativo" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=26"/>
+            <forward name="falhaIncluirFichaFilaTratamento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=20"/>
+            <forward name="fichaJaEstaNaFilaAtendimentoOrcamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=1"/>
+            <forward name="fichaJaEstaNaFilaAtendimentoTratamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=2"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoTratamento/consultarFilaAtendimentoTratamento" scope="request" type="web.filaAtendimentoTratamento.ConsultarFilaAtendimentoTratamentoAction" validate="false">
+            <forward name="sucesso" path="/app/filaAtendimentoTratamento/consultarFilaAtendimentoTratamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoTratamento/consultarFilaAtendimentoTratamentoEmAtendimento" scope="request" type="web.filaAtendimentoTratamento.ConsultarFilaAtendimentoTratamentoEmAtendimentoAction" validate="false">
+            <forward name="sucesso" path="/app/filaAtendimentoTratamento/consultarFilaAtendimentoTratamentoEmAtendimento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoTratamento/actionPriorizarAtendimentoTratamento" scope="request" type="web.filaAtendimentoTratamento.PriorizarAtendimentoTratamentoAction" validate="false">
+            <forward name="sucesso" path="/app/filaAtendimentoTratamento/consultarFilaAtendimentoTratamento.do"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="atendimentoIniciadoOuRemovidoDaFila" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=13"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoTratamento/actionRemoverAtendimentoTratamento" scope="request" type="web.filaAtendimentoTratamento.RemoverAtendimentoTratamentoAction" validate="false">
+            <forward name="sucesso" path="/app/filaAtendimentoTratamento/consultarFilaAtendimentoTratamento.do"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="atendimentoIniciadoOuRemovidoDaFila" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=13"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoTratamento/actionAtenderAtendimentoTratamento" scope="request" type="web.filaAtendimentoTratamento.AtenderAtendimentoTratamentoAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/atenderAtendimentoTratamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaIdentificarUsuarioLogado" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=21"/>
+            <forward name="funcionarioNaoEhDentista" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=3"/>
+            <forward name="atendimentoIniciadoOuRemovidoDaFila" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=13"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/filaAtendimentoTratamento/actionContinuarAtendimentoTratamento" scope="request" type="web.filaAtendimentoTratamento.ContinuarAtendimentoTratamentoAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/atenderAtendimentoTratamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaContinuarTratamento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=3"/>
+            <forward name="falhaIdentificarUsuarioLogado" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=21"/>
+            <forward name="funcionarioNaoEhDentista" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=3"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim FilaAtendimentoTratamento -->
+
+        <!-- AtendimentoOrcamento -->
+        <action path="/app/atendimentoOrcamento/incluirProcedimento" scope="request" type="web.paciente.VisualizarHistoricoDenteAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoOrcamento/incluirProcedimento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="IncluirProcedimentoActionForm" path="/app/atendimentoOrcamento/actionIncluirProcedimento" scope="request" type="web.atendimentoOrcamento.IncluirProcedimentoAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucessoIncluirProcedimento.jsp?tipo=dente"/>
+            <forward name="falhaSalvar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=7"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="valorCobradoInvalido" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=19"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+            <forward name="falhaIdentificarAtendimento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=2"/>
+            <forward name="falhaIdentificarDente" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=4"/>
+        </action>
+
+        <action path="/app/atendimentoOrcamento/excluirRegistroHistoricoDente" scope="request" type="web.atendimentoOrcamento.ExcluirRegistroHistoricoDenteAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoOrcamento/incluirProcedimento.do"/>
+            <forward name="falhaApagar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=5"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="naoEhRegistroDeOrcamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=25"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/atendimentoOrcamento/incluirProcedimentoBoca" scope="request" type="web.paciente.VisualizarHistoricoBocaAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoOrcamento/incluirProcedimentoBoca.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="IncluirProcedimentoBocaActionForm" path="/app/atendimentoOrcamento/actionIncluirProcedimentoBoca" scope="request" type="web.atendimentoOrcamento.IncluirProcedimentoBocaAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucessoIncluirProcedimento.jsp?tipo=boca"/>
+            <forward name="falhaSalvar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=7"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="valorCobradoInvalido" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=19"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+            <forward name="falhaIdentificarAtendimento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=2"/>
+        </action>
+
+        <action path="/app/atendimentoOrcamento/excluirRegistroHistoricoBoca" scope="request" type="web.atendimentoOrcamento.ExcluirRegistroHistoricoBocaAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoOrcamento/incluirProcedimentoBoca.do"/>
+            <forward name="falhaApagar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=5"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="naoEhRegistroDeOrcamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=25"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/atendimentoOrcamento/encerrarAtendimentoOrcamento" scope="request" type="web.atendimentoOrcamento.EncerrarAtendimentoOrcamentoAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucesso.jsp"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaIdentificarAtendimento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=2"/>
+            <forward name="falhaIdentificarUsuarioLogado" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=21"/>
+            <forward name="funcionarioNaoEhDentista" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=3"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/atendimentoOrcamento/imprimirOrcamento" scope="request" type="web.atendimentoOrcamento.ImprimirOrcamentoAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoOrcamento/imprimirOrcamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim AtendimentoOrcamento -->
+
+        <!-- AtendimentoTratamento -->
+        <action path="/app/atendimentoTratamento/manipularProcedimentos" scope="request" type="web.paciente.VisualizarHistoricoDenteAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/manipularProcedimentos.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="IncluirProcedimentoActionForm" path="/app/atendimentoTratamento/actionIncluirProcedimento" scope="request" type="web.atendimentoTratamento.IncluirProcedimentoAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucessoManipularProcedimentos.jsp?tipo=dente"/>
+            <forward name="falhaSalvar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=7"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="valorCobradoInvalido" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=19"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+            <forward name="falhaIdentificarAtendimento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=2"/>
+            <forward name="falhaIdentificarDente" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=4"/>
+        </action>
+
+        <action path="/app/atendimentoTratamento/excluirRegistroHistoricoDente" scope="request" type="web.atendimentoOrcamento.ExcluirRegistroHistoricoDenteAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/manipularProcedimentos.do"/>
+            <forward name="falhaApagar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=5"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="naoEhRegistroDeOrcamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=25"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/atendimentoTratamento/iniciarProcedimento" scope="request" type="web.atendimentoTratamento.IniciarProcedimentoAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/manipularProcedimentos.do"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="naoEhRegistroLiberado" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=16"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/atendimentoTratamento/finalizarProcedimento" scope="request" type="web.atendimentoTratamento.FinalizarProcedimentoAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/manipularProcedimentos.do"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="naoEhRegistroEmTratamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=17"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/atendimentoTratamento/manipularProcedimentosBoca" scope="request" type="web.paciente.VisualizarHistoricoBocaAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/manipularProcedimentosBoca.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="IncluirProcedimentoBocaActionForm" path="/app/atendimentoTratamento/actionIncluirProcedimentoBoca" scope="request" type="web.atendimentoTratamento.IncluirProcedimentoBocaAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucessoManipularProcedimentos.jsp?tipo=boca"/>
+            <forward name="falhaSalvar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=7"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="valorCobradoInvalido" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=19"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+            <forward name="falhaIdentificarAtendimento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=2"/>
+        </action>
+
+        <action path="/app/atendimentoTratamento/excluirRegistroHistoricoBoca" scope="request" type="web.atendimentoOrcamento.ExcluirRegistroHistoricoBocaAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/manipularProcedimentosBoca.do"/>
+            <forward name="falhaApagar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=5"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="naoEhRegistroDeOrcamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=25"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/atendimentoTratamento/iniciarProcedimentoBoca" scope="request" type="web.atendimentoTratamento.IniciarProcedimentoBocaAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/manipularProcedimentosBoca.do"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="naoEhRegistroLiberado" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=16"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/atendimentoTratamento/finalizarProcedimentoBoca" scope="request" type="web.atendimentoTratamento.FinalizarProcedimentoBocaAction" validate="false">
+            <forward name="sucesso" path="/app/atendimentoTratamento/manipularProcedimentosBoca.do"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="naoEhRegistroEmTratamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=17"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/atendimentoTratamento/encerrarAtendimentoTratamento" scope="request" type="web.atendimentoTratamento.EncerrarAtendimentoTratamentoAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucesso.jsp"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaIdentificarAtendimento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=2"/>
+            <forward name="falhaIdentificarUsuarioLogado" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=21"/>
+            <forward name="funcionarioNaoEhDentista" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=3"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim AtendimentoTratamento -->
+
+        <!-- Caixa -->
+        <action name="ConsultarPacienteActionForm" path="/app/caixa/actionConsultarPacienteParaPagamentos" scope="request" type="web.paciente.ConsultarPacienteAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/consultarPacienteParaPagamentos.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="ConsultarPacienteActionForm" path="/app/caixa/actionConsultarPacienteParaLiberacaoProcedimentos" scope="request" type="web.paciente.ConsultarPacienteAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/consultarPacienteParaLiberacaoProcedimentos.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="ConsultarPacienteActionForm" path="/app/caixa/actionConsultarPacienteParaDevolverDinheiro" scope="request" type="web.paciente.ConsultarPacienteAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/consultarPacienteParaDevolverDinheiro.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/actionRegistrarPagamento" scope="request" type="web.caixa.RegistrarPagamentoAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/registrarPagamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaIdentificarFicha" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=24"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/actionRegistrarDevolucaoDinheiro" scope="request" type="web.caixa.RegistrarDevolucaoDinheiroAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucesso.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="saldoInsuficiente" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=15"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/actionListarPagamentos" scope="request" type="web.caixa.ListarPagamentosAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/listarPagamentos.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaIdentificarFicha" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=24"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/devolverDinheiro" scope="request" type="web.caixa.DevolverDinheiroAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/devolverDinheiro.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaIdentificarFicha" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=24"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/cancelarPagamento" scope="request" type="web.caixa.CancelarPagamentoAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/registrarPagamentos.do"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="FaturarPagamentoActionForm" path="/app/caixa/faturarPagamento" scope="request" type="web.caixa.FaturarPagamentoAction" validate="false">
+            <forward name="sucesso" path="/app/paciente/actionVisualizarPaciente.do"/>
+            <forward name="falhaIdentificarFicha" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=24"/>
+            <forward name="falhaIdentificarFormaPagamento" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=24"/>
+            <forward name="falhaIdentificarUsuarioLogado" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=21"/>
+            <forward name="falhaSalvar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=7"/>
+            <forward name="falhaValorFinalNaoConfere" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=27"/>
+            <forward name="valorMinimoNaoAtingido" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=14"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/actionLiberacaoProcedimentos" scope="request" type="web.paciente.VisualizarOdontogramaAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/liberacaoProcedimentos.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/actionVisualizarHistoricoBocaParaLiberarProcedimentos" scope="request" type="web.paciente.VisualizarHistoricoBocaAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/visualizarHistoricoBocaParaLiberarProcedimentos.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/liberarProcedimentoBocaCompleta" scope="request" type="web.caixa.LiberarProcedimentoBocaCompletaAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/actionVisualizarHistoricoBocaParaLiberarProcedimentos.do"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="saldoInsuficiente" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=15"/>
+            <forward name="naoEhRegistroDeOrcamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=25"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/cancelarLiberacaoProcedimentoBocaCompleta" scope="request" type="web.caixa.CancelarLiberacaoProcedimentoBocaCompletaAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/actionVisualizarHistoricoBocaParaLiberarProcedimentos.do"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="naoEhRegistroLiberado" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=16"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/actionVisualizarHistoricoDenteParaLiberarProcedimentos" scope="request" type="web.paciente.VisualizarHistoricoDenteAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/visualizarHistoricoDenteParaLiberarProcedimentos.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/liberarProcedimentoDente" scope="request" type="web.caixa.LiberarProcedimentoDenteAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/actionVisualizarHistoricoDenteParaLiberarProcedimentos.do"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="saldoInsuficiente" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=15"/>
+            <forward name="naoEhRegistroDeOrcamento" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=25"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/caixa/cancelarLiberacaoProcedimentoDente" scope="request" type="web.caixa.CancelarLiberacaoProcedimentoDenteAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/actionVisualizarHistoricoDenteParaLiberarProcedimentos.do"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="naoEhRegistroLiberado" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=16"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim Caixa -->
+
+        <!-- ChequeBancario -->
+        <action path="/app/chequeBancario/cadastrarChequeBancario" forward="/app/chequeBancario/cadastrarChequeBancario.jsp"/>
+
+        <action name="CadastrarChequeBancarioActionForm" path="/app/chequeBancario/actionCadastrarChequeBancario" scope="request" type="web.chequeBancario.CadastrarChequeBancarioAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/actionRegistrarPagamento.do"/>
+            <forward name="falhaFormatarData" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=13"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/chequeBancario/actionRemoverChequeBancario" scope="request" type="web.chequeBancario.RemoverChequeBancarioAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/actionRegistrarPagamento.do"/>
+            <forward name="falhaAoCapturarRegistrosDeCheques" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=23"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="ConsultarChequeBancarioActionForm" path="/app/chequeBancario/actionConsultarChequeBancario" scope="request" type="web.chequeBancario.ConsultarChequeBancarioAction" validate="false">
+            <forward name="sucesso" path="/app/chequeBancario/consultarChequeBancario.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaFormatarData" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=13"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="AtualizarChequeBancarioActionForm" path="/app/chequeBancario/actionAtualizarChequeBancario" scope="request" type="web.chequeBancario.AtualizarChequeBancarioAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucesso.jsp"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaFormatarData" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=13"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/chequeBancario/actionEditarChequeBancario" scope="request" type="web.chequeBancario.EditarChequeBancarioAction" validate="false">
+            <forward name="sucesso" path="/app/chequeBancario/editarChequeBancario.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/chequeBancario/actionVisualizarChequeBancario" scope="request" type="web.chequeBancario.VisualizarChequeBancarioAction" validate="false">
+            <forward name="sucesso" path="/app/chequeBancario/visualizarChequeBancario.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim ChequeBancario -->
+
+        <!-- ComprovantePagamentoCartao -->
+        <action path="/app/comprovantePagamentoCartao/cadastrarComprovantePagamentoCartao" forward="/app/comprovantePagamentoCartao/cadastrarComprovantePagamentoCartao.jsp"/>
+
+        <action name="CadastrarComprovantePagamentoCartaoActionForm" path="/app/comprovantePagamentoCartao/actionCadastrarComprovantePagamentoCartao" scope="request" type="web.comprovantePagamentoCartao.CadastrarComprovantePagamentoCartaoAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/actionRegistrarPagamento.do"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/comprovantePagamentoCartao/actionRemoverComprovantePagamentoCartao" scope="request" type="web.comprovantePagamentoCartao.RemoverComprovantePagamentoCartaoAction" validate="false">
+            <forward name="sucesso" path="/app/caixa/actionRegistrarPagamento.do"/>
+            <forward name="falhaAoCapturarRegistrosDeComprovantesPagamentosCartao" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=25"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="ConsultarComprovantePagamentoCartaoActionForm" path="/app/comprovantePagamentoCartao/actionConsultarComprovantePagamentoCartao" scope="request" type="web.comprovantePagamentoCartao.ConsultarComprovantePagamentoCartaoAction" validate="false">
+            <forward name="sucesso" path="/app/comprovantePagamentoCartao/consultarComprovantePagamentoCartao.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaFormatarData" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=13"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="AtualizarComprovantePagamentoCartaoActionForm" path="/app/comprovantePagamentoCartao/actionAtualizarComprovanteCartao" scope="request" type="web.comprovantePagamentoCartao.AtualizarComprovantePagamentoCartaoAction" validate="false">
+            <forward name="sucesso" path="/mensagensDeRetorno/sucesso.jsp"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaFormatarData" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=13"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/comprovantePagamentoCartao/actionEditarComprovanteCartao" scope="request" type="web.comprovantePagamentoCartao.EditarComprovantePagamentoCartaoAction" validate="false">
+            <forward name="sucesso" path="/app/comprovantePagamentoCartao/editarComprovantePagamentoCartao.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/comprovantePagamentoCartao/actionVisualizarComprovanteCartao" scope="request" type="web.comprovantePagamentoCartao.VisualizarComprovantePagamentoCartaoAction" validate="false">
+            <forward name="sucesso" path="/app/comprovantePagamentoCartao/visualizarComprovantePagamentoCartao.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim ComprovantePagamentoCartao -->
+
+        <!-- FormaPagamento -->
+        <action name="CadastrarFormaPagamentoActionForm" path="/app/formaPagamento/actionCadastrarFormaPagamento" scope="request" type="web.formaPagamento.CadastrarFormaPagamentoAction" validate="false">
+            <forward name="sucesso" path="/app/formaPagamento/actionVisualizarFormaPagamento.do"/>
+            <forward name="falhaValidar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=6"/>
+            <forward name="falhaSalvar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=7"/>
+            <forward name="nomeFormaPagamentoJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=11"/>
+            <forward name="descricaoFormaPagamentoJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=12"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="ConsultarFormaPagamentoActionForm" path="/app/formaPagamento/actionConsultarFormaPagamento" scope="request" type="web.formaPagamento.ConsultarFormaPagamentoAction" validate="false">
+            <forward name="sucesso" path="/app/formaPagamento/consultarFormaPagamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="AtualizarFormaPagamentoActionForm" path="/app/formaPagamento/actionAtualizarFormaPagamento" scope="request" type="web.formaPagamento.AtualizarFormaPagamentoAction" validate="false">
+            <forward name="sucesso" path="/app/formaPagamento/actionVisualizarFormaPagamento.do"/>
+            <forward name="falhaValidar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=6"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="nomeFormaPagamentoJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=11"/>
+            <forward name="descricaoFormaPagamentoJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=12"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/formaPagamento/actionEditarFormaPagamento" scope="request" type="web.formaPagamento.EditarFormaPagamentoAction" validate="false">
+            <forward name="sucesso" path="/app/formaPagamento/editarFormaPagamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/formaPagamento/actionVisualizarFormaPagamento" scope="request" type="web.formaPagamento.VisualizarFormaPagamentoAction" validate="false">
+            <forward name="sucesso" path="/app/formaPagamento/visualizarFormaPagamento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim FormaPagamento -->
+
+        <!-- Funcionario -->
+        <action name="CadastrarFuncionarioActionForm" path="/app/funcionario/actionCadastrarFuncionario" scope="request" type="web.funcionario.CadastrarFuncionarioAction" validate="false">
+            <forward name="sucesso" path="/app/funcionario/actionVisualizarFuncionario.do"/>
+            <forward name="nomeDeUsuarioJaExiste" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=2"/>
+            <forward name="cpfJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=5"/>
+            <forward name="rgJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=6"/>
+            <forward name="croJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=7"/>
+            <forward name="falhaValidar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=6"/>
+            <forward name="falhaSalvar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=7"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="falhaConsultarGrupoAcesso" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=19"/>
+            <forward name="falhaFormatarData" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=13"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="ConsultarFuncionarioActionForm" path="/app/funcionario/actionConsultarFuncionario" scope="request" type="web.funcionario.ConsultarFuncionarioAction" validate="false">
+            <forward name="sucesso" path="/app/funcionario/consultarFuncionario.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="AtualizarFuncionarioActionForm" path="/app/funcionario/actionAtualizarFuncionario" scope="request" type="web.funcionario.AtualizarFuncionarioAction" validate="false">
+            <forward name="sucesso" path="/app/funcionario/actionVisualizarFuncionario.do"/>
+            <forward name="nomeDeUsuarioJaExiste" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=2"/>
+            <forward name="cpfJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=5"/>
+            <forward name="rgJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=6"/>
+            <forward name="croJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=7"/>
+            <forward name="falhaValidar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=6"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaInserirDentista" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=10"/>
+            <forward name="falhaFormatarData" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=13"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/funcionario/actionEditarFuncionario" scope="request" type="web.funcionario.EditarFuncionarioAction" validate="false">
+            <forward name="sucesso" path="/app/funcionario/editarFuncionario.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/funcionario/actionVisualizarFuncionario" scope="request" type="web.funcionario.VisualizarFuncionarioAction" validate="false">
+            <forward name="sucesso" path="/app/funcionario/visualizarFuncionario.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim Funcionario -->
+
+        <!-- GrupoAcesso -->
+        <action name="ConsultarGrupoAcessoActionForm" path="/app/grupoAcesso/actionConsultarGrupoAcesso" scope="request" type="web.grupoAcesso.ConsultarGrupoAcessoAction" validate="false">
+            <forward name="sucesso" path="/app/grupoAcesso/consultarGrupoAcesso.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim GrupoAcesso -->
+
+        <!-- Paciente -->
+        <action name="CadastrarPacienteActionForm" path="/app/paciente/actionCadastrarPaciente" scope="request" type="web.paciente.CadastrarPacienteAction" validate="false">
+            <forward name="sucesso" path="/app/paciente/actionVisualizarPaciente.do"/>
+            <forward name="cpfJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=5"/>
+            <forward name="rgJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=6"/>
+            <forward name="falhaValidar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=6"/>
+            <forward name="falhaSalvar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=7"/>
+            <forward name="falhaFormatarData" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=13"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="ConsultarPacienteActionForm" path="/app/paciente/actionConsultarPaciente" scope="request" type="web.paciente.ConsultarPacienteAction" validate="false">
+            <forward name="sucesso" path="/app/paciente/consultarPaciente.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="AtualizarPacienteActionForm" path="/app/paciente/actionAtualizarPaciente" scope="request" type="web.paciente.AtualizarPacienteAction" validate="false">
+            <forward name="sucesso" path="/app/paciente/actionVisualizarPaciente.do"/>
+            <forward name="cpfJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=5"/>
+            <forward name="rgJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=6"/>
+            <forward name="falhaValidar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=6"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="falhaFormatarData" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=13"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/paciente/actionEditarPaciente" scope="request" type="web.paciente.EditarPacienteAction" validate="false">
+            <forward name="sucesso" path="/app/paciente/editarPaciente.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/paciente/actionVisualizarPaciente" scope="request" type="web.paciente.VisualizarPacienteAction" validate="false">
+            <forward name="sucesso" path="/app/paciente/visualizarPaciente.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <!-- Odontograma -->
+        <action path="/app/paciente/odontograma/actionVisualizarOdontograma" scope="request" type="web.paciente.VisualizarOdontogramaAction" validate="false">
+            <forward name="sucesso" path="/app/paciente/odontograma/visualizarOdontograma.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/paciente/odontograma/actionVisualizarHistoricoDente" scope="request" type="web.paciente.VisualizarHistoricoDenteAction" validate="false">
+            <forward name="sucesso" path="/app/paciente/odontograma/visualizarHistoricoDente.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/paciente/odontograma/actionVisualizarHistoricoBoca" scope="request" type="web.paciente.VisualizarHistoricoBocaAction" validate="false">
+            <forward name="sucesso" path="/app/paciente/odontograma/visualizarHistoricoBoca.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim Paciente -->
+
+        <!-- Procedimento -->
+        <action name="CadastrarProcedimentoActionForm" path="/app/procedimento/actionCadastrarProcedimento" scope="request" type="web.procedimento.CadastrarProcedimentoAction" validate="false">
+            <forward name="sucesso" path="/app/procedimento/actionVisualizarProcedimento.do"/>
+            <forward name="falhaValidar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=6"/>
+            <forward name="falhaSalvar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=7"/>
+            <forward name="nomeProcedimentoJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=9"/>
+            <forward name="descricaoProcedimentoJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=10"/>
+            <forward name="valorMinimoInvalido" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=18"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="ConsultarProcedimentoActionForm" path="/app/procedimento/actionConsultarProcedimento" scope="request" type="web.procedimento.ConsultarProcedimentoAction" validate="false">
+            <forward name="sucesso" path="/app/procedimento/consultarProcedimento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action name="AtualizarProcedimentoActionForm" path="/app/procedimento/actionAtualizarProcedimento" scope="request" type="web.procedimento.AtualizarProcedimentoAction" validate="false">
+            <forward name="sucesso" path="/app/procedimento/actionVisualizarProcedimento.do"/>
+            <forward name="falhaValidar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=6"/>
+            <forward name="falhaAtualizar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=9"/>
+            <forward name="nomeProcedimentoJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=9"/>
+            <forward name="descricaoProcedimentoJaExiste" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=10"/>
+            <forward name="valorMinimoInvalido" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=18"/>
+            <forward name="obrigatoriosEmBranco" path="/mensagensDeRetorno/advertencia.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/procedimento/actionEditarProcedimento" scope="request" type="web.procedimento.EditarProcedimentoAction" validate="false">
+            <forward name="sucesso" path="/app/procedimento/editarProcedimento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+
+        <action path="/app/procedimento/actionVisualizarProcedimento" scope="request" type="web.procedimento.VisualizarProcedimentoAction" validate="false">
+            <forward name="sucesso" path="/app/procedimento/visualizarProcedimento.jsp"/>
+            <forward name="falhaConsultar" path="/mensagensDeRetorno/erro.jsp?codigoMensagem=8"/>
+            <forward name="sessaoInvalida" path="/login/login.jsp?isSessionExpired=1"/>
+        </action>
+        <!-- Fim Procedimento -->
+        <!-- Fim do mapeamento de paginas com actions -->
+    </action-mappings>
+
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <message-resources parameter="MessageResources"/>
+
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+</struts-config>
