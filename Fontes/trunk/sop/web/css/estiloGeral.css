@@ -1,0 +1,217 @@
+/* 
+    Document   : estiloGeral
+    Created on : 25/01/2010, 14:43:36
+    Author     : Fabricio Reis
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+html, body {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.letrasIniciaisMaiusculas {
+    text-transform: capitalize;
+}
+
+.letrasMaiusculas {
+    text-transform: uppercase;
+}
+
+.letrasMinusculas {
+    text-transform: lowercase;
+}
+
+.botaodefault {
+    color: #333;
+    width:85px;
+    height:18px;
+    background:url(../imagens/bgbt-med.png) no-repeat;
+    font-weight: bold;
+    border:none;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.botaodefaultgra {
+    color: #333;
+    width:130px;
+    height:18px;
+    background:url(../imagens/bgbt-gra.png) no-repeat;
+    font-weight: bold;
+    border:none;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.botaodefaultextrag {
+    color: #333;
+    width:160px;
+    height:18px;
+    background:url(../imagens/bgbt-extrag.png) no-repeat;
+    font-weight: bold;
+    border:none;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.botaodefaultpeq {
+    color: #333;
+    width:30px;
+    height:18px;
+    background:url(../imagens/bgbt-peq.png) no-repeat;
+    font-weight: bold;
+    border:none;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.divlistagem {
+    overflow: auto;
+    visibility: visible;
+    z-index: auto;
+    page-break-after: auto;
+    border: thin none #CCCCCC;
+    height: 100%;
+    width: 100%;
+}
+
+input {
+    border: 1px solid #999999;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 11px;
+}
+
+.bordatabela {
+    background-color: #E6E6E6;
+    border: 1px solid #CCCCCC;
+}
+
+p {
+    text-align:center;
+}
+
+a:link {
+    text-decoration: none;
+    color: #FFFFFF;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style: none;
+    border-top-style: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #FFFFFF;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style: none;
+    border-top-style: none;
+}
+
+a:hover, a:focus {
+    text-decoration:none;
+    color: #00EE76;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style: none;
+    border-top-style: none;
+}
+
+table a, table a:link, table a:visited {
+    border:none;
+}
+
+table {
+    width:100%;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-style: normal;
+}
+
+caption {
+    color: #9ba9b4;
+    font-size:.94em;
+    letter-spacing:.1em;
+    margin:1em 0 0 0;
+    padding:0;
+    caption-side:top;
+    text-align:center;
+}
+
+tr.odd td{
+    background:#f7fbff
+}
+
+tr.odd .column1	{
+    background-color:#ebf2f9;
+}
+
+.column1{
+    background:#f9fcfe;
+}
+
+td {
+    color:#678197;
+    border-bottom:1px solid #e5eff8;
+    border-left:1px solid #e5eff8;
+    border-right:1px solid #e5eff8;
+    font-size: 11px;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    vertical-align: middle;
+}
+
+.paddingCelulaTabela {
+    padding:.3em 1em;
+}
+
+th {
+    font-weight:normal;
+    color: #678197;
+    text-align:left;
+    border-bottom: 1px solid #e5eff8;
+    border-left:1px solid #e5eff8;
+    border-right:1px solid #e5eff8;
+    padding:.3em 1em;
+    background-color: #e7e6e6;
+    font-size: 12px;
+    font-family: Verdana;
+    font-style: normal;
+}
+
+thead th {
+    background-color:#ebf2f9;
+    text-align:center;
+    color:#66a3d3;
+    font-family: 'Century Gothic','Trebuchet MS',Arial,SansSerif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+tfoot th {
+    text-align:center;
+    background-color:#ebf2f9;
+}
+
+tfoot th strong {
+    font:bold 1.2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+    margin:.5em .5em .5em 0;
+    color:#66a3d3;
+}
+
+tfoot th em {
+    color:#f03b58;
+    font-weight: bold;
+    font-size: 1.1em;
+    font-style: normal;
+}
